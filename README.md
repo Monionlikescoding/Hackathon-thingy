@@ -1,2 +1,2 @@
 # Hackathon-thingy
-funny haha
+hey guys, don't mess with main branch without us convening first
