@@ -22,10 +22,10 @@ public class Move : MonoBehaviour
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
         moveValue.y=0; // you can only move in the x-direction
 
-        playerRb.AddForce(moveValue * speed);
+        playerRb.AddForce(moveValue * speed * Time.deltaTime);
 
         Vector2 vel = playerRb.linearVelocity;
-        vel.x = Mathf.Clamp(vel.x, -speed/12, speed/12); // clamping x-velocity to speed
+        vel.x = Mathf.Clamp(vel.x, -speed/100, speed/100); // clamping x-velocity to speed
         playerRb.linearVelocity = vel;
 
         if(moveValue.x < 0) {
