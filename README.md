@@ -1,1 +1,2 @@
-its me the big j from the limbus corporation of ruina
+# Hackathon-thingy
+hey guys, don't mess with main branch without us convening first
