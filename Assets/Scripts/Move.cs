@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Move : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public float speed;
+    public float speed; // Speed is multiplied by 100
     public float accel;
     InputAction moveAction;
     public Rigidbody2D playerRb;
@@ -17,18 +17,30 @@ public class Move : MonoBehaviour
         playerRb = GetComponent<Rigidbody2D>();
         moveAction = InputSystem.actions.FindAction("Move");
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Sets speed to default value
+        if(speed == 0) {
+            speed = 6;
+        }
+
+        if(playerRb.linearDamping == 0) {
+            playerRb.linearDamping = 10f;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    // Fixed update is constant time, (this is needed for applying forces & velocity management as many devices run on different framerates)
+    void FixedUpdate()
     {
-        Vector2 moveValue = moveAction.ReadValue<Vector2>()*speed/accel;
+        Vector2 moveValue = moveAction.ReadValue<Vector2>(); // no need to divide it by accel
         moveValue.y=0; // you can only move in the x-direction
 
-        playerRb.AddForce(moveValue * speed * Time.deltaTime);
+        playerRb.AddForce(moveValue * speed * 200 * Time.deltaTime);
 
         Vector2 vel = playerRb.linearVelocity;
 
+        // Currently trying to fix accel so it uses linear dampening instead of hardcoding it
+        // Test the code, uncomment this out if it doesn't work. Also, linear dampening should be at 10 rn, and speed at 6
+        /*
         if(moveValue.y==0){ //if the player doesn't hold a direction key, automatic deceleration happens
             if(vel.x>0){
                 vel.x-=speed/400;
@@ -40,8 +52,9 @@ public class Move : MonoBehaviour
                 vel.x=0;
             }
         }
+        */
 
-        vel.x = Mathf.Clamp(vel.x, -speed/100, speed/100); // clamping x-velocity to speed
+        vel.x = Mathf.Clamp(vel.x, -speed, speed); // clamping x-velocity to speed
         playerRb.linearVelocity = vel;
 
         if(moveValue.x < 0) {
