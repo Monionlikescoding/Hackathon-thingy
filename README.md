@@ -1,2 +1,2 @@
-the guy from limbrary corporation
+the guy from limbobrary corporation
  bottom text
