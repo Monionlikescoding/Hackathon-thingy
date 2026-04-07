@@ -1,0 +1,4 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20assets/work_button.uss?fileID=7433441132597879392&amp;guid=ff5f8947ae1b22743a5f59082632b57f&amp;type=3#work_button"/>
+    <ui:Button text="get back&#10;to work" name="ClicktoWork" style="height: 145px; width: 74px; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/Custom%20fonts/Jersey_10/Jersey10-Regular.ttf?fileID=12800000&amp;guid=0ab983f196d9b0e4aa0617b95605f692&amp;type=3#Jersey10-Regular&quot;);"/>
+</ui:UXML>
