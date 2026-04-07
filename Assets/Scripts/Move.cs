@@ -58,10 +58,10 @@ public class Move : MonoBehaviour
         playerRb.linearVelocity = vel;
 
         if(moveValue.x < 0) {
-            spriteRenderer.flipX = true;
+            transform.localScale = new Vector2(-1, 1);
         }
         else if(moveValue.x > 0) {
-            spriteRenderer.flipX = false;
+            transform.localScale = new Vector2(1, 1);
         }
     }
 }
