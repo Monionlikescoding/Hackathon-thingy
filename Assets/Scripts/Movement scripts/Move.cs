@@ -24,7 +24,7 @@ public class Move : MonoBehaviour
         }
 
         if(playerRb.linearDamping == 0) {
-            playerRb.linearDamping = 10f;
+            playerRb.linearDamping = speed * 5f;
         }
     }
 
@@ -34,11 +34,11 @@ public class Move : MonoBehaviour
         Vector2 moveValue = moveAction.ReadValue<Vector2>(); // no need to divide it by accel
         moveValue.y=0; // you can only move in the x-direction
 
-        playerRb.AddForce(moveValue * speed * 200 * Time.deltaTime);
+        playerRb.AddForce(moveValue * speed * 500 * Time.deltaTime);
 
         Vector2 vel = playerRb.linearVelocity;
 
-        // Currently trying to fix accel so it uses linear dampening instead of hardcoding it
+        // Currently trying to fix accel so it uses linear damping instead of hardcoding it
         // Test the code, uncomment this out if it doesn't work. Also, linear dampening should be at 10 rn, and speed at 6
         /*
         if(moveValue.y==0){ //if the player doesn't hold a direction key, automatic deceleration happens
