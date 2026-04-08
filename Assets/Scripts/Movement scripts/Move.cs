@@ -11,12 +11,14 @@ public class Move : MonoBehaviour
     InputAction moveAction;
     public Rigidbody2D playerRb;
     SpriteRenderer spriteRenderer;
+    Animator anim;
 
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         moveAction = InputSystem.actions.FindAction("Move");
         spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
 
         // Sets speed to default value
         if(speed == 0) {
@@ -56,6 +58,13 @@ public class Move : MonoBehaviour
 
         vel.x = Mathf.Clamp(vel.x, -speed, speed); // clamping x-velocity to speed
         playerRb.linearVelocity = vel;
+
+        if(moveValue.x != 0) {
+            anim.SetBool("walking", true);
+        }
+        else {
+            anim.SetBool("walking", false);
+        }
 
         if(moveValue.x < 0) {
             transform.localScale = new Vector2(-1, 1);
