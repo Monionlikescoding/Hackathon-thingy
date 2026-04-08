@@ -25,9 +25,7 @@ public class Move : MonoBehaviour
             speed = 6;
         }
 
-        if(playerRb.linearDamping == 0) {
-            playerRb.linearDamping = speed * 5f;
-        }
+        playerRb.linearDamping = 20f;
     }
 
     // Fixed update is constant time, (this is needed for applying forces & velocity management as many devices run on different framerates)
