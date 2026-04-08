@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2f241f4fd0fa74b959b42dae379775e4
+guid: 0d15178113efe4fb8be6e70f26b336c7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1568228022872771272
-    second: bongbong arm_0
+      213: 5998745235659719731
+    second: bongbong leg (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bongbong arm_0
+      name: bongbong leg (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 13
-        height: 22
+        width: 8
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 835fad90ce88c3ae0800000000000000
-      internalID: -1568228022872771272
+      spriteID: 33480955203df3350800000000000000
+      internalID: 5998745235659719731
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bongbong arm_0: -1568228022872771272
+      bongbong leg (1)_0: 5998745235659719731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
