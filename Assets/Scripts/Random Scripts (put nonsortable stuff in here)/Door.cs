@@ -20,6 +20,9 @@ public class Door : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             anim.SetTrigger("open");
+            Debug.Log("Door should open");
         }
+
+        
     }
 }
