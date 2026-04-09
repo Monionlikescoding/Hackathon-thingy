@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1362482307760937934}
   - component: {fileID: 5878716924831713512}
   - component: {fileID: 2239578302144053745}
-  - component: {fileID: 533529218652242577}
+  - component: {fileID: 6840591216961056030}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -162,7 +162,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.52279305, y: 1.375}
   m_EdgeRadius: 0
---- !u!114 &533529218652242577
+--- !u!114 &6840591216961056030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,9 +171,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 799008181571418036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f97e71234f9945d1add80e9d1ab47b6, type: 3}
+  m_Script: {fileID: 11500000, guid: ae35c6e5b9a6b445f93dba2920d012cc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Door
+  m_EditorClassIdentifier: Assembly-CSharp::DoorSMALL
 --- !u!1 &2902583714796290092
 GameObject:
   m_ObjectHideFlags: 0
