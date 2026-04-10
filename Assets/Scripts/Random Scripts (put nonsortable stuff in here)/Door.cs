@@ -10,6 +10,7 @@ public class Door : MonoBehaviour
     Transform AnimationRunner;
     Transform GoThroughRunner;
     public bool fullyOpen = false;
+    public int roomid;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +37,7 @@ public class Door : MonoBehaviour
                 Debug.Log("go through");
                 Transform exitPoint = exit.transform.Find("Exit");
                 other.gameObject.transform.position = exitPoint.position;
+                other.GetComponent<Move>().RoomId = exit.GetComponent<Door>().roomid;
                 openDoor();
                 exit.GetComponent<Door>().openDoor();
             }

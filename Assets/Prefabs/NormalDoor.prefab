@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7402098198821699578}
   - component: {fileID: 2752380699533537599}
-  - component: {fileID: 5265725641095649073}
   m_Layer: 0
   m_Name: GoThroughRunner
   m_TagString: Untagged
@@ -79,18 +78,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.30558586, y: 1.4971642}
   m_EdgeRadius: 0
---- !u!114 &5265725641095649073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1039879293016992740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40b601556fcfb493ea72e277905fe4fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::testing
 --- !u!1 &5064422829242356587
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +88,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3413517709472639725}
   - component: {fileID: 6563677477687968479}
-  - component: {fileID: 1936335482918388179}
   m_Layer: 0
   m_Name: AnimationRunner
   m_TagString: Untagged
@@ -170,18 +156,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.77829194, y: 1.4837273}
   m_EdgeRadius: 0
---- !u!114 &1936335482918388179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5064422829242356587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40b601556fcfb493ea72e277905fe4fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::testing
 --- !u!1 &6171485758402442706
 GameObject:
   m_ObjectHideFlags: 0
