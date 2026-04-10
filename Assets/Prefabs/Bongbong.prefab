@@ -616,6 +616,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Move
   speed: 6
   accel: 0
+  interact:
+    m_Name: Interact
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7a5b0f29-fc01-49bd-b0e3-b6dadc04c6cc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   playerRb: {fileID: 0}
 --- !u!50 &3322409614221485928
 Rigidbody2D:

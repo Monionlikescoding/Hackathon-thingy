@@ -9,18 +9,14 @@ public class Move : MonoBehaviour
     public float speed; // Speed is multiplied by 100
     public float accel;
     InputAction moveAction;
-    public InputAction interact;
     public Rigidbody2D playerRb;
     SpriteRenderer spriteRenderer;
     Animator anim;
-    private bool nearDoor = false;
-    private GameObject currentDoor;
 
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         moveAction = InputSystem.actions.FindAction("Move");
-        interact = InputSystem.actions.FindAction("Interact");
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 
@@ -74,53 +70,5 @@ public class Move : MonoBehaviour
         else if(moveValue.x > 0) {
             transform.localScale = new Vector2(1, 1);
         }
-
-        
     }
-
-    void Update() {
-        if (Keyboard.current.eKey.wasPressedThisFrame)
-        {
-            Debug.Log("E pressed (direct check)");
-        }
-    }
-
-    // Door code
-    private void OnInteract(InputAction.CallbackContext context)
-    {
-        if (!nearDoor || currentDoor == null) return;
-
-        currentDoor.GetComponent<Door>().UseDoor(gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Door"))
-        {
-            nearDoor = true;
-            currentDoor = other.gameObject;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Door"))
-        {
-            nearDoor = false;
-            currentDoor = null;
-        }
-    }
-
-        private void OnEnable()
-    {
-        interact.Enable();
-        interact.performed += OnInteract;
-    }
-
-    private void OnDisable()
-    {
-        interact.performed -= OnInteract;
-        interact.Disable();
-    }
-
 }

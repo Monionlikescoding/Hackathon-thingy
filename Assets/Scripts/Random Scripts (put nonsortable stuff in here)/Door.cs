@@ -5,13 +5,39 @@ using System.Collections;
 public class Door : MonoBehaviour
 {
     Animator anim;
+    public GameObject exit;
     public int size;
-    public int ID;
-    public GameObject exitPoint;
-    public Door otherDoorScript;
-    public bool fullyOpen = false;
-    public int stateOfOpening; // This is when the door is opening because another door opens this door
-    public bool calledAlready = false;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Use tags to identify what entered the zone
+        if (other.CompareTag("Player"))
+        {
+            anim.SetBool("open",true);
+            exit.GetComponent<Door>().anim.SetBool("open",true);
+        }
+    }
+	void OnTriggerExit2D(Collider2D other) {
+		if (other.CompareTag("Player"))
+        {
+            anim.SetBool("open",false);
+            exit.GetComponent<Door>().anim.SetBool("open",false);
+        }
+	}
+
+
+    /*
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,12 +67,10 @@ public class Door : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // Use tags to identify what entered the zone
-        if (other.CompareTag("Player") && stateOfOpening != 1)
-        {   
-            switch(size) {
-                case 0: anim.SetBool("open",true); break;
-                case 1: anim.SetBool("openSMALL", true); break;
-            }
+        if (other.CompareTag("Player"))
+        {
+            anim.SetBool("open",true);
+            exit.GetComponent<Door>().anim.SetBool("open",true);
         }
         
     }
@@ -94,4 +118,5 @@ public class Door : MonoBehaviour
     {
         fullyOpen = false;
     }
+    */
 }
