@@ -3,6 +3,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     Animator anim;
+    public GameObject exit;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,12 +22,14 @@ public class Door : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             anim.SetBool("open",true);
+            exit.GetComponent<Door>().anim.SetBool("open",true);
         }
     }
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.CompareTag("Player"))
         {
             anim.SetBool("open",false);
+            exit.GetComponent<Door>().anim.SetBool("open",false);
         }
 	}
 }
