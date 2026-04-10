@@ -67,7 +67,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.14715624, y: 1.9690621}
+  m_Offset: {x: 0.18571329, y: 1.9690621}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -77,7 +77,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3679304, y: 4.035426}
+  m_Size: {x: 0.2908163, y: 4.035426}
   m_EdgeRadius: 0
 --- !u!50 &8289644494486548160
 Rigidbody2D:
@@ -269,7 +269,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.14715624, y: 1.9690621}
+  m_Offset: {x: 0.10518241, y: 1.9690621}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -279,7 +279,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3679304, y: 4.035426}
+  m_Size: {x: 0.28398275, y: 4.035426}
   m_EdgeRadius: 0
 --- !u!50 &2331189228275659462
 Rigidbody2D:
@@ -469,30 +469,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6575638645491775498, guid: a80667bc36d374f988f5ea8ce444fcb4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5669513825929038199}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a80667bc36d374f988f5ea8ce444fcb4, type: 3}
---- !u!1 &5677188139671480917 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6575638645491775498, guid: a80667bc36d374f988f5ea8ce444fcb4, type: 3}
-  m_PrefabInstance: {fileID: 1551542895296893535}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5669513825929038199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5677188139671480917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66736fa118379514c92b5047863acf88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Doorteleport
-  exit: {fileID: 0}
-  direction: 0
 --- !u!4 &5801406121913674009 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4974942856868477766, guid: a80667bc36d374f988f5ea8ce444fcb4, type: 3}

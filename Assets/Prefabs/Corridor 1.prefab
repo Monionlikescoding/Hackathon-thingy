@@ -466,7 +466,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallDoor 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2230167504472019717, guid: e0a9aca485a7d45c4aa2f781da277e8a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
