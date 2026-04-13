@@ -8,6 +8,7 @@ public class Move : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float speed; // Speed is multiplied by 100
     public float accel;
+    public int RoomId;
     InputAction moveAction;
     public Rigidbody2D playerRb;
     SpriteRenderer spriteRenderer;
