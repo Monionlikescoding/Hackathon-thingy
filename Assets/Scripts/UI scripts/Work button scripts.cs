@@ -32,9 +32,11 @@ public class Workbuttonscripts : MonoBehaviour
     }
 
     private void OnButtonClick()
-    {
-        Debug.Log("Yeah i clicked ts");
-        player.transform.position = cell.transform.position;
+    {   
+        Vector2 pos = cell.transform.position;
+        pos.y -= 1.3f;
+        pos.x += 0.75f;
+        player.transform.position = pos;
         wok.Work(cell.transform.Find("Abnormality").gameObject, workTime);
         
         //change work time based on another stat later
