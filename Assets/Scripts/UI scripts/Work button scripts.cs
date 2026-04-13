@@ -8,8 +8,11 @@ public class Workbuttonscripts : MonoBehaviour
     private GameObject player;
     public GameObject cell;
     public int workTime;
+    public VisualTreeAsset inf;
     private work wok;
-    private void OnEnable()
+
+
+    private void Start()
     {
         // 1. Get the root VisualElement from the UIDocument component
         VisualElement root = GetComponent<UIDocument>().rootVisualElement; // Gets the root element
@@ -22,14 +25,20 @@ public class Workbuttonscripts : MonoBehaviour
         {
             myButton.clicked += OnButtonClick;
         }
+
         player=GameObject.Find("Bongbong");
+        
         wok=GameObject.Find("Bongbong").GetComponent<work>();
     }
 
     private void OnButtonClick()
-    {
-        player.transform.position=cell.transform.position;
+    {   
+        Vector2 pos = cell.transform.position;
+        pos.y -= 1.3f;
+        pos.x += 0.75f;
+        player.transform.position = pos;
         wok.Work(cell.transform.Find("Abnormality").gameObject, workTime);
+        
         //change work time based on another stat later
     }
 }
