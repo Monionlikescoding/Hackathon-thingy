@@ -4,7 +4,7 @@ public class work : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private GameObject abno;
-    private int workingTime;
+    private int workingTime = 0;
     void Start()
     {
         

@@ -27,14 +27,12 @@ public class Door : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {    
-        Debug.Log("Triggered");
         // Use tags to identify what entered the zone
         if (other.CompareTag("Player"))
         {
 
             if (other.IsTouching(GoThroughRunner.GetComponent<Collider2D>()))
             {
-                Debug.Log("go through");
                 Transform exitPoint = exit.transform.Find("Exit");
                 other.gameObject.transform.position = exitPoint.position;
                 other.GetComponent<Move>().RoomId = exit.GetComponent<Door>().roomid;
@@ -43,7 +41,6 @@ public class Door : MonoBehaviour
             }
             else if (other.IsTouching(AnimationRunner.GetComponent<Collider2D>()))
             {
-                Debug.Log("play animation");
                 openDoor();
                 exit.GetComponent<Door>().openDoor();
             }
