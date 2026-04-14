@@ -8,7 +8,8 @@ public class Workbuttonscripts : MonoBehaviour
     private GameObject player;
     public GameObject cell;
     public int workTime;
-    public VisualTreeAsset inf;
+    //public VisualTreeAsset inf;
+    public UIDocument workUI;
     private work wok;
 
 
