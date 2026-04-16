@@ -197,7 +197,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4974942856868477766}
   - component: {fileID: 7408516468457838416}
-  - component: {fileID: 7663520723778048560}
   - component: {fileID: 5589739710426079048}
   - component: {fileID: 3279800473425236575}
   m_Layer: 0
@@ -284,28 +283,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!95 &7663520723778048560
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6575638645491775498}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ea984dac5de044d82969319bc0c197df, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5589739710426079048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +297,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Door
   exit: {fileID: 0}
   size: 0
-  fullyOpen: 0
+  roomid: 0
+  openSprites: []
 --- !u!50 &3279800473425236575
 Rigidbody2D:
   serializedVersion: 5
