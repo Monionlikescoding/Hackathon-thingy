@@ -2,6 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class Move : MonoBehaviour
 {
@@ -78,9 +79,13 @@ public class Move : MonoBehaviour
 
         if(moveValue.x < 0) {
             transform.localScale = new Vector2(-1, 1);
+            transform.Find("HealthBar").localScale=new Vector2(-1,1);
+            transform.Find("MindBar").localScale=new Vector2(-1,1);
         }
         else if(moveValue.x > 0) {
             transform.localScale = new Vector2(1, 1);
+            transform.Find("HealthBar").localScale=new Vector2(1,1);
+            transform.Find("MindBar").localScale=new Vector2(1,1);
         }
     }
 }
