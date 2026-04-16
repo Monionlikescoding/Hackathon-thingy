@@ -26,7 +26,15 @@ public class Door : MonoBehaviour
         GoThroughRunner = transform.Find("GoThroughRunner");
         opening=false;
         openState=0;
-        openSprites=GameObject.Find("Game Manager").GetComponent<variableScript>().doorSprites;
+
+        switch (size) {
+            case 1: // smol
+                openSprites=GameObject.Find("Game Manager").GetComponent<variableScript>().doorSprites;
+                break;
+            case 0: // norm
+                openSprites=GameObject.Find("Game Manager").GetComponent<variableScript>().doorSpritesNORMAL;
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -38,7 +46,7 @@ public class Door : MonoBehaviour
         else if(!opening&&openState>2){
             openState--;
         }
-        Debug.Log(openSprites[(openState/3)]);
+        //Debug.Log(openSprites[(openState/3)]);
         gameObject.GetComponent<SpriteRenderer>().sprite=openSprites[openState/3];
     }
 

@@ -13,6 +13,17 @@ public class Move : MonoBehaviour
     public Rigidbody2D playerRb;
     SpriteRenderer spriteRenderer;
     Animator anim;
+    public float body = 15f;
+    public float bodyMAX = 15f;
+
+    public float mind = 15f;
+    public float mindMAX = 15f;
+
+    public float soul = 15f;
+    public float soulMAX = 15f;
+
+    public bool[] Favors; // This is the array that has the boolean values for whether special work is available
+
 
     void Start()
     {
