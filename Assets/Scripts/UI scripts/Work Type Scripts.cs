@@ -6,6 +6,7 @@ public class WorkTypeScripts : MonoBehaviour
     private GameObject player;
     public int workTime;
     private work wok;
+    private GameObject viewPoint;
 
 
     private void Start()
@@ -46,12 +47,15 @@ public class WorkTypeScripts : MonoBehaviour
             mySpecialButton.clicked += OnSpecialButtonClick;
         }
 
-        //player=GameObject.Find("Bongbong");
-        
+        player=GameObject.Find("Bongbong");
+        viewPoint=GameObject.Find("Main Camera");
         //wok=GameObject.Find("Bongbong").GetComponent<work>();
     }
+	private void Update() {
+		transform.position=viewPoint.transform.position+new Vector3(-10.5f,5.7f,10);
+	}
 
-    private void OnBodyButtonClick()
+	private void OnBodyButtonClick()
     {   
         Debug.Log("[On Hit] : Murder");
     }

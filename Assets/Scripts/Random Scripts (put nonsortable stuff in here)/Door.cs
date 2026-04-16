@@ -1,5 +1,9 @@
 using UnityEngine;
+using System.Collections.Generic;
 using System.Collections;
+using TMPro;
+using UnityEngine.SceneManagement;
+using Unity.Hierarchy;
 
 
 public class Door : MonoBehaviour
@@ -9,20 +13,33 @@ public class Door : MonoBehaviour
     public int size;
     Transform AnimationRunner;
     Transform GoThroughRunner;
-    public bool fullyOpen = false;
+    //public bool fullyOpen = false;
+    private bool opening;
+    private int openState;
     public int roomid;
+    public List<Sprite> openSprites;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         anim = GetComponent<Animator>();
         AnimationRunner = transform.Find("AnimationRunner");
         GoThroughRunner = transform.Find("GoThroughRunner");
+        opening=false;
+        openState=0;
+        openSprites=GameObject.Find("Game Manager").GetComponent<variableScript>().doorSprites;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
+        if(opening&&openState<15){
+            openState++;
+        }
+        else if(!opening&&openState>2){
+            openState--;
+        }
+        Debug.Log(openSprites[(openState/3)]);
+        gameObject.GetComponent<SpriteRenderer>().sprite=openSprites[openState/3];
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -30,31 +47,32 @@ public class Door : MonoBehaviour
         // Use tags to identify what entered the zone
         if (other.CompareTag("Player"))
         {
-
+            opening=true;
+            exit.GetComponent<Door>().opening=true;
             if (other.IsTouching(GoThroughRunner.GetComponent<Collider2D>()))
             {
                 Transform exitPoint = exit.transform.Find("Exit");
                 other.gameObject.transform.position = exitPoint.position;
                 other.GetComponent<Move>().RoomId = exit.GetComponent<Door>().roomid;
-                openDoor();
-                exit.GetComponent<Door>().openDoor();
-            }
-            else if (other.IsTouching(AnimationRunner.GetComponent<Collider2D>()))
-            {
-                openDoor();
-                exit.GetComponent<Door>().openDoor();
             }
         }
     }
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.CompareTag("Player"))
         {
-            closeDoor();
-            exit.GetComponent<Door>().closeDoor();
+            opening=false;
+            exit.GetComponent<Door>().opening=false;
         }
 	}
+    void OnTriggerStay2D(Collider2D other){
+        if (other.CompareTag("Player")&&opening==false)
+        {
+            opening=true;
+            exit.GetComponent<Door>().opening=true;
+        }
 
-    public void openDoor() {
+    }
+    /*public void openDoor() {
         switch(size) {
             case 0: anim.SetBool("open",true); break;
             case 1: anim.SetBool("openSMALL", true); break;
@@ -65,7 +83,7 @@ public class Door : MonoBehaviour
             case 0: anim.SetBool("open",false); break;
             case 1: anim.SetBool("openSMALL", false); break;
         }
-    }
+    }*/
 
     /*
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -139,7 +157,7 @@ public class Door : MonoBehaviour
         calledAlready = false;
     }
     */
-    public void OnDoorOpened()
+    /*public void OnDoorOpened()
     {
         fullyOpen = true;
     }
@@ -147,5 +165,5 @@ public class Door : MonoBehaviour
     public void OnDoorClosed()
     {
         fullyOpen = false;
-    }
+    }*/
 }
