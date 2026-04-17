@@ -5,6 +5,7 @@ public class work : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private GameObject abno;
     private int workingTime = 0;
+    public bool isWorking = false;
     void Start()
     {
         
@@ -21,6 +22,7 @@ public class work : MonoBehaviour
         }
     }
     public void Work(GameObject evil, int time){
+        
         //script for working on an abnormality
     }
 }
