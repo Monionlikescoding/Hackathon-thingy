@@ -14,6 +14,7 @@ public class Move : MonoBehaviour
     public Rigidbody2D playerRb;
     SpriteRenderer spriteRenderer;
     Animator anim;
+    public work workScript;
     public float body = 15f;
     public float bodyMAX = 15f;
 
@@ -25,6 +26,7 @@ public class Move : MonoBehaviour
 
     public bool[] Favors; // This is the array that has the boolean values for whether special work is available
 
+    public bool currentlyWorking = false;
 
     void Start()
     {
@@ -32,6 +34,7 @@ public class Move : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        workScript = GetComponent<work>();
 
         // Sets speed to default value
         if(speed == 0) {
@@ -46,8 +49,10 @@ public class Move : MonoBehaviour
     {
         Vector2 moveValue = moveAction.ReadValue<Vector2>(); // no need to divide it by accel
         moveValue.y=0; // you can only move in the x-direction
-
-        playerRb.AddForce(moveValue * speed * 500 * Time.deltaTime);
+        currentlyWorking = workScript.isWorking;
+        if(!currentlyWorking) {
+            playerRb.AddForce(moveValue * speed * 500 * Time.deltaTime);
+        }
 
         Vector2 vel = playerRb.linearVelocity;
 
@@ -87,5 +92,7 @@ public class Move : MonoBehaviour
             transform.Find("HealthBar").localScale=new Vector2(1,1);
             transform.Find("MindBar").localScale=new Vector2(1,1);
         }
+
+
     }
 }
