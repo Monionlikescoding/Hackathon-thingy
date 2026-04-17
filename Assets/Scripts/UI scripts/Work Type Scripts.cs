@@ -47,12 +47,15 @@ public class WorkTypeScripts : MonoBehaviour
             mySpecialButton.clicked += OnSpecialButtonClick;
         }
 
+        gameObject.SetActive(false);
         player=GameObject.Find("Bongbong");
         viewPoint=GameObject.Find("Main Camera");
         //wok=GameObject.Find("Bongbong").GetComponent<work>();
     }
 	private void Update() {
-		transform.position=viewPoint.transform.position+new Vector3(-10.5f,5.7f,10);
+        //if(*whatever code that needs to be here*) gameObject.SetActive(true);
+        //else gameObject.SetActive(false);
+		gameObject.GetComponent<RectTransform>().transform.position=viewPoint.transform.position+new Vector3(-7.5f,-4f,10);
 	}
 
 	private void OnBodyButtonClick()
