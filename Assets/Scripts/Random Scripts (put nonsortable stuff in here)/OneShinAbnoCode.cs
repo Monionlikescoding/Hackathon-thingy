@@ -1,5 +1,5 @@
 using UnityEngine;
-[System.Serializable]
+/*[System.Serializable]
 public class OneShinAbnoCode : MonoBehaviour, IAbno
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -12,7 +12,7 @@ public class OneShinAbnoCode : MonoBehaviour, IAbno
     public int maxAngerCount = 0;
     public int AngerCount = 0;
     public int threatLevel = 0;
-    public float chanceToGetGift = 0.05;
+    public float chanceToGetGift = 0.05f;
 
     void Start()
     {
@@ -46,3 +46,4 @@ public class OneShinAbnoCode : MonoBehaviour, IAbno
     }
 
 }
+*/
