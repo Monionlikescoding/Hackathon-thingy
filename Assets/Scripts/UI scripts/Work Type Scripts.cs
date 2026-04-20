@@ -8,6 +8,7 @@ public class WorkTypeScripts : MonoBehaviour
     private work wok;
     private GameObject viewPoint;
     public Workbuttonscripts buttonScript;
+    public bool Using = false;
 
 
     private void Start()
@@ -48,9 +49,9 @@ public class WorkTypeScripts : MonoBehaviour
             mySpecialButton.clicked += OnSpecialButtonClick;
         }
 
-        gameObject.SetActive(false);
         player=GameObject.Find("Bongbong");
         viewPoint=GameObject.Find("Main Camera");
+        gameObject.SetActive(false);
         //wok=GameObject.Find("Bongbong").GetComponent<work>();
     }
 	private void Update() {
@@ -59,25 +60,64 @@ public class WorkTypeScripts : MonoBehaviour
 		gameObject.GetComponent<RectTransform>().transform.position=viewPoint.transform.position+new Vector3(-7.5f,-4f,10);
 	}
 
+    public void FixingButtons() {
+
+        VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+        Button myBodyButton = root.Q<Button>("Body");
+
+        if (myBodyButton != null)
+        {
+            myBodyButton.clicked += OnBodyButtonClick;
+        }
+
+        Button myMindButton = root.Q<Button>("Mind"); // Gets the button
+
+        // 3. Assign the function to the 'clicked' event
+        if (myMindButton != null)
+        {
+            myMindButton.clicked += OnMindButtonClick;
+        }
+
+        Button mySoulButton = root.Q<Button>("Soul"); // Gets the button
+
+        // 3. Assign the function to the 'clicked' event
+        if (mySoulButton != null)
+        {
+            mySoulButton.clicked += OnSoulButtonClick;
+        }
+
+        Button mySpecialButton = root.Q<Button>("Special"); // Gets the button
+
+        // 3. Assign the function to the 'clicked' event
+        if (mySpecialButton != null)
+        {
+            mySpecialButton.clicked += OnSpecialButtonClick;
+        }
+    }
+
 	private void OnBodyButtonClick()
     {   
         Debug.Log("[On Hit] : Murder");
         buttonScript.start("body");
+        Using = false;
     }
     private void OnMindButtonClick()
     {   
         Debug.Log("[On Think] : Murder");
         buttonScript.start("mind");
+        Using = false;
     }
     private void OnSoulButtonClick()
     {   
         Debug.Log("[On Ego] : Murder");
         buttonScript.start("soul");
+        Using = false;
     }
     private void OnSpecialButtonClick()
     {   
         Debug.Log("[On Special Work] : Murder");
         buttonScript.start("special");
+        Using = false;
     }
     
 }

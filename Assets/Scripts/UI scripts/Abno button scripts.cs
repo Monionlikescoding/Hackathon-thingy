@@ -8,7 +8,7 @@ public class Abnobuttonscripts : MonoBehaviour
     public VisualTreeAsset inf;
     private GameObject abnoInfo;
     private Info scr;
-    private void OnEnable()
+    private void Start()
     {
         // 1. Get the root VisualElement from the UIDocument component
         VisualElement root = GetComponent<UIDocument>().rootVisualElement; // Gets the root element

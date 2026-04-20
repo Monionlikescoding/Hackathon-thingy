@@ -44,6 +44,7 @@ public class Workbuttonscripts : MonoBehaviour
         IAbno abnoIF = abno.GetComponent<IAbno>();
         //workTime = abno.workTime /
         workObject.SetActive(true);
+        workObject.GetComponent<WorkTypeScripts>().FixingButtons();
         workObject.GetComponent<WorkTypeScripts>().buttonScript=this;
         Debug.Log("clicked");
         //change work time based on another stat later
@@ -56,5 +57,6 @@ public class Workbuttonscripts : MonoBehaviour
         player.transform.position = pos;
         player.GetComponent<Move>().RoomId = roomID;
         wok.Work(cell.transform.Find("Abnormality").gameObject, workTime);
+        Debug.Log("Something happened");
     }
 }
