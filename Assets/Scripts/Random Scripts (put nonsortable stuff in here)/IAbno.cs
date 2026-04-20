@@ -1,16 +1,19 @@
 using UnityEngine;
 
 public interface IAbno {
-    GameObject player {get;}
-    int[] playerStats {get;}
-    int dmgType {get;}
-    int dmgAmnt {get;}
-    bool canEscape {get;}
-    bool hasAngerMeter {get;}
-    int maxAngerCount {get;}
-    int AngerCount {get;}
-    int threatLevel {get;}
-    float chanceToGetGift {get;}
+
+    GameObject Player{ get; set; } 
+    int[] PlayerStats{ get; set; } 
+    int DmgType{ get; set; } 
+    int DmgAmnt{ get; set; } 
+    bool CanEscape{ get; set; } 
+    bool HasAngerMeter{ get; set; } 
+    int MaxAngerCount{ get; set; } 
+    int AngerCount{ get; set; } 
+    int ThreatLevel{ get; set; } 
+    float ChanceToGetGift{ get; set; } 
+
+
 
     public void onBadWorkResult();
 
