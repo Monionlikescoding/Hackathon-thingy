@@ -7,10 +7,12 @@ public class Workbuttonscripts : MonoBehaviour
     // (OnEnable is just start but slightly different)
     private GameObject player;
     public GameObject cell;
+    public GameObject abno;
     public int workTime;
     //public VisualTreeAsset inf;
     public UIDocument workUI;
     private work wok;
+    public int roomID;
 
 
     private void Start()
@@ -35,9 +37,12 @@ public class Workbuttonscripts : MonoBehaviour
     private void OnButtonClick()
     {   
         Vector2 pos = cell.transform.position;
+        IAbno abnoIF = abno.GetComponent<IAbno>();
+        //workTime = abno.workTime / 
         pos.y -= 1.3f;
         pos.x += 0.75f;
         player.transform.position = pos;
+        player.GetComponent<Move>().RoomId = roomID;
         wok.Work(cell.transform.Find("Abnormality").gameObject, workTime);
         
         //change work time based on another stat later
