@@ -7,6 +7,7 @@ public class WorkTypeScripts : MonoBehaviour
     public int workTime;
     private work wok;
     private GameObject viewPoint;
+    public Workbuttonscripts buttonScript;
 
 
     private void Start()
@@ -61,18 +62,22 @@ public class WorkTypeScripts : MonoBehaviour
 	private void OnBodyButtonClick()
     {   
         Debug.Log("[On Hit] : Murder");
+        buttonScript.start("body");
     }
     private void OnMindButtonClick()
     {   
         Debug.Log("[On Think] : Murder");
+        buttonScript.start("mind");
     }
     private void OnSoulButtonClick()
     {   
         Debug.Log("[On Ego] : Murder");
+        buttonScript.start("soul");
     }
     private void OnSpecialButtonClick()
     {   
         Debug.Log("[On Special Work] : Murder");
+        buttonScript.start("special");
     }
     
 }

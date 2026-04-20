@@ -921,6 +921,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbnoWorkButton
       objectReference: {fileID: 0}
+    - target: {fileID: 8791463015701374036, guid: e872eaebeb0550445a80f9ed9d19c7ad, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

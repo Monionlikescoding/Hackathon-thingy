@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 
 public class Workbuttonscripts : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Workbuttonscripts : MonoBehaviour
     private GameObject player;
     public GameObject cell;
     public GameObject abno;
+    public GameObject workObject;
     public int workTime;
     //public VisualTreeAsset inf;
     public UIDocument workUI;
@@ -30,21 +32,29 @@ public class Workbuttonscripts : MonoBehaviour
         }
 
         player=GameObject.Find("Bongbong");
-        
         wok=GameObject.Find("Bongbong").GetComponent<work>();
+        workObject=GameObject.Find("WorkUI");
     }
 
-    private void OnButtonClick()
+	private void Update() {
+	}
+
+	private void OnButtonClick()
     {   
-        Vector2 pos = cell.transform.position;
         IAbno abnoIF = abno.GetComponent<IAbno>();
-        //workTime = abno.workTime / 
+        //workTime = abno.workTime /
+        workObject.SetActive(true);
+        workObject.GetComponent<WorkTypeScripts>().buttonScript=this;
+        Debug.Log("clicked");
+        //change work time based on another stat later
+    }
+    public void start(string workType){
+        workObject.SetActive(false);
+        Vector2 pos = cell.transform.position;
         pos.y -= 1.3f;
         pos.x += 0.75f;
         player.transform.position = pos;
         player.GetComponent<Move>().RoomId = roomID;
         wok.Work(cell.transform.Find("Abnormality").gameObject, workTime);
-        
-        //change work time based on another stat later
     }
 }
