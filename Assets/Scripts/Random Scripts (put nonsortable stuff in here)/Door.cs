@@ -47,7 +47,7 @@ public class Door : MonoBehaviour
             openState--;
         }
         //Debug.Log(openSprites[(openState/3)]);
-        gameObject.GetComponent<SpriteRenderer>().sprite=openSprites[openState/3];
+        gameObject.GetComponent<SpriteRenderer>().sprite = openSprites[openState/3];
     }
 
     void OnTriggerEnter2D(Collider2D other)
