@@ -25,6 +25,7 @@ public class Move : MonoBehaviour
     public float soulMAX = 15f;
 
     public bool[] Favors; // This is the array that has the boolean values for whether special work is available
+    public int[] enkephalin;
 
     public bool currentlyWorking = false;
 
@@ -49,7 +50,6 @@ public class Move : MonoBehaviour
     {
         Vector2 moveValue = moveAction.ReadValue<Vector2>(); // no need to divide it by accel
         moveValue.y=0; // you can only move in the x-direction
-        currentlyWorking = workScript.isWorking;
         if(!currentlyWorking) {
             playerRb.AddForce(moveValue * speed * 500 * Time.deltaTime);
         }
@@ -95,4 +95,5 @@ public class Move : MonoBehaviour
 
 
     }
+
 }

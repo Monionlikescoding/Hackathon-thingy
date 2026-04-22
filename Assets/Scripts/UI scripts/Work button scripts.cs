@@ -10,7 +10,7 @@ public class Workbuttonscripts : MonoBehaviour
     public GameObject cell;
     public GameObject abno;
     public GameObject workObject;
-    public int workTime;
+    public float workTime;
     //public VisualTreeAsset inf;
     public UIDocument workUI;
     private work wok;
@@ -42,8 +42,9 @@ public class Workbuttonscripts : MonoBehaviour
 	private void OnButtonClick()
     {   
         IAbno abnoIF = abno.GetComponent<IAbno>();
-        //workTime = abno.workTime /
+        workTime = abnoIF.WorkTime;
         workObject.SetActive(true);
+        workObject.GetComponent<WorkTypeScripts>().FixingButtons();
         workObject.GetComponent<WorkTypeScripts>().buttonScript=this;
         Debug.Log("clicked");
         //change work time based on another stat later
@@ -55,6 +56,8 @@ public class Workbuttonscripts : MonoBehaviour
         pos.x += 0.75f;
         player.transform.position = pos;
         player.GetComponent<Move>().RoomId = roomID;
-        wok.Work(cell.transform.Find("Abnormality").gameObject, workTime);
+        GameObject AbNo = cell.transform.Find("Abnormality").gameObject;
+        wok.Work(AbNo, workTime, AbNo.GetComponent<IAbno>().AmountOfWorks);
+        Debug.Log("Something happened");
     }
 }
