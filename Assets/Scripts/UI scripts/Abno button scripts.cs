@@ -5,7 +5,10 @@ public class Abnobuttonscripts : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     // (OnEnable is just start but slightly different)
-    private void OnEnable()
+    public VisualTreeAsset inf;
+    private GameObject abnoInfo;
+    private Info scr;
+    private void Start()
     {
         // 1. Get the root VisualElement from the UIDocument component
         VisualElement root = GetComponent<UIDocument>().rootVisualElement; // Gets the root element
@@ -18,10 +21,15 @@ public class Abnobuttonscripts : MonoBehaviour
         {
             myButton.clicked += OnButtonClick;
         }
+        abnoInfo = GameObject.Find("AbnoInfo");
+        scr=GameObject.Find("AbnoInfo").GetComponent<Info>();
+        abnoInfo.SetActive(false);
     }
 
     private void OnButtonClick()
     {
         Debug.Log("[On Click] : Murder");
+        abnoInfo.SetActive(false);
+        scr.showInfo(inf);
     }
 }

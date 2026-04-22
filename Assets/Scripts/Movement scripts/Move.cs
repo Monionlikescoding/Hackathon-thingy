@@ -2,16 +2,32 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class Move : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float speed; // Speed is multiplied by 100
     public float accel;
+    public int RoomId;
     InputAction moveAction;
     public Rigidbody2D playerRb;
     SpriteRenderer spriteRenderer;
     Animator anim;
+    public work workScript;
+    public float body = 15f;
+    public float bodyMAX = 15f;
+
+    public float mind = 15f;
+    public float mindMAX = 15f;
+
+    public float soul = 15f;
+    public float soulMAX = 15f;
+
+    public bool[] Favors; // This is the array that has the boolean values for whether special work is available
+    public int[] enkephalin;
+
+    public bool currentlyWorking = false;
 
     void Start()
     {
@@ -19,6 +35,7 @@ public class Move : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        workScript = GetComponent<work>();
 
         // Sets speed to default value
         if(speed == 0) {
@@ -33,8 +50,9 @@ public class Move : MonoBehaviour
     {
         Vector2 moveValue = moveAction.ReadValue<Vector2>(); // no need to divide it by accel
         moveValue.y=0; // you can only move in the x-direction
-
-        playerRb.AddForce(moveValue * speed * 500 * Time.deltaTime);
+        if(!currentlyWorking) {
+            playerRb.AddForce(moveValue * speed * 500 * Time.deltaTime);
+        }
 
         Vector2 vel = playerRb.linearVelocity;
 
@@ -66,9 +84,16 @@ public class Move : MonoBehaviour
 
         if(moveValue.x < 0) {
             transform.localScale = new Vector2(-1, 1);
+            transform.Find("HealthBar").localScale=new Vector2(-1,1);
+            transform.Find("MindBar").localScale=new Vector2(-1,1);
         }
         else if(moveValue.x > 0) {
             transform.localScale = new Vector2(1, 1);
+            transform.Find("HealthBar").localScale=new Vector2(1,1);
+            transform.Find("MindBar").localScale=new Vector2(1,1);
         }
+
+
     }
+
 }

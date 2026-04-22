@@ -1,4 +1,5 @@
 Change log :
-Added animations to doors
-Added doors
-Fixed animations for bongbong
+Fixed door animations
+Added ability to move through doors
+you might wanna make a way where we don't have to manually assign each door, but if we must, we must
+ill try to add some of the work ui tmrw

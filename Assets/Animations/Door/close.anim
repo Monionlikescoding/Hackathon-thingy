@@ -21,17 +21,15 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -757544303, guid: 40725b98cc9a748cdab9331c5025f013, type: 3}
-    - time: 0.083333336
-      value: {fileID: 994822035, guid: 40725b98cc9a748cdab9331c5025f013, type: 3}
-    - time: 0.16666667
-      value: {fileID: 1267448284, guid: 40725b98cc9a748cdab9331c5025f013, type: 3}
-    - time: 0.25
-      value: {fileID: 1258287837, guid: 40725b98cc9a748cdab9331c5025f013, type: 3}
-    - time: 0.33333334
-      value: {fileID: 230983258, guid: 40725b98cc9a748cdab9331c5025f013, type: 3}
-    - time: 0.41666666
-      value: {fileID: -7341407202210888751, guid: 40725b98cc9a748cdab9331c5025f013, type: 3}
+      value: {fileID: -129523600, guid: ec7f066968e3a4f96b546bba919302c7, type: 3}
+    - time: 0.05
+      value: {fileID: -902027947, guid: ec7f066968e3a4f96b546bba919302c7, type: 3}
+    - time: 0.1
+      value: {fileID: 1103116360, guid: ec7f066968e3a4f96b546bba919302c7, type: 3}
+    - time: 0.15
+      value: {fileID: -193546224, guid: ec7f066968e3a4f96b546bba919302c7, type: 3}
+    - time: 0.2
+      value: {fileID: -1480140615, guid: ec7f066968e3a4f96b546bba919302c7, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -54,18 +52,17 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -757544303, guid: 40725b98cc9a748cdab9331c5025f013, type: 3}
-    - {fileID: 994822035, guid: 40725b98cc9a748cdab9331c5025f013, type: 3}
-    - {fileID: 1267448284, guid: 40725b98cc9a748cdab9331c5025f013, type: 3}
-    - {fileID: 1258287837, guid: 40725b98cc9a748cdab9331c5025f013, type: 3}
-    - {fileID: 230983258, guid: 40725b98cc9a748cdab9331c5025f013, type: 3}
-    - {fileID: -7341407202210888751, guid: 40725b98cc9a748cdab9331c5025f013, type: 3}
+    - {fileID: -129523600, guid: ec7f066968e3a4f96b546bba919302c7, type: 3}
+    - {fileID: -902027947, guid: ec7f066968e3a4f96b546bba919302c7, type: 3}
+    - {fileID: 1103116360, guid: ec7f066968e3a4f96b546bba919302c7, type: 3}
+    - {fileID: -193546224, guid: ec7f066968e3a4f96b546bba919302c7, type: 3}
+    - {fileID: -1480140615, guid: ec7f066968e3a4f96b546bba919302c7, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.43333334
+    m_StopTime: 0.21666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -84,4 +81,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.2
+    functionName: OnDoorClosed
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
