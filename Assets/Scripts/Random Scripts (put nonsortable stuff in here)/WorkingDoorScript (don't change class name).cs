@@ -49,8 +49,6 @@ public class Workbuttonscripts : MonoBehaviour
         IAbno abnoIF = abno.GetComponent<IAbno>();
         workTime = abnoIF.WorkTime;
         workObject.SetActive(true);
-        workObject.GetComponent<WorkTypeScripts>().FixingButtons();
-        workObject.GetComponent<WorkTypeScripts>().buttonScript=this;
         Debug.Log("clicked");
         //change work time based on another stat later
     }
