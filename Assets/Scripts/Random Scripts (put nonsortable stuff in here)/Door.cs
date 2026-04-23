@@ -34,6 +34,9 @@ public class Door : MonoBehaviour
             case 0: // norm
                 openSprites=GameObject.Find("Game Manager").GetComponent<variableScript>().doorSpritesNORMAL;
                 break;
+            case 2: // corridor
+                openSprites=GameObject.Find("Game Manager").GetComponent<variableScript>().doorSpritesCorridor;
+                break;
         }
     }
 
