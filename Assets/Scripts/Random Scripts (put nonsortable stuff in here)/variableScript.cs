@@ -7,6 +7,7 @@ public class variableScript : MonoBehaviour
     public List<Sprite> doorSprites;
     // Yo jianyu, u forgor that there are two sizes of doors
     public List<Sprite> doorSpritesNORMAL;
+    public List<Sprite> doorSpritesCorridor;
     void Start()
     {
         
