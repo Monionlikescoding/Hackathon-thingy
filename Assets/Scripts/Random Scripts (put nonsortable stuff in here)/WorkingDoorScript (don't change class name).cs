@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using static UnityEditor.PlayerSettings;
 
@@ -7,6 +8,7 @@ public class Workbuttonscripts : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     // (OnEnable is just start but slightly different)
     private GameObject player;
+    public InputActionProperty EAction;
     public GameObject cell;
     public GameObject abno;
     public GameObject workObject;
@@ -14,7 +16,7 @@ public class Workbuttonscripts : MonoBehaviour
     //public VisualTreeAsset inf;
     public VisualElement workUI;
     public UIDocument doc;
-    public Button myButton;
+
     private work wok;
     public int roomID;
 
@@ -22,35 +24,27 @@ public class Workbuttonscripts : MonoBehaviour
     private void Start()
     {
         // 1. Get the root VisualElement from the UIDocument component
-        workUI = GetComponent<UIDocument>().rootVisualElement; // Gets the root element
-
-        // 2. Find the button by name
-        myButton = workUI.Q<Button>("ClicktoWork"); // Gets the button
-
-        // 3. Assign the function to the 'clicked' event
-        if (myButton != null)
-        {
-            myButton.clicked += OnButtonClick;
-        }
-
         player=GameObject.Find("Bongbong");
         wok=GameObject.Find("Bongbong").GetComponent<work>();
         workObject=GameObject.Find("WorkUI");
         doc=GetComponent<UIDocument>();
-        myButton.visible=false;
+        EAction.action.Enable();
+        
 	}
 
 	private void Update() {
 	}
     
-	public void enter(Collider2D collision) {
-        myButton.visible=true;
-	}
-	public void exit(Collider2D collision) {
-        myButton.visible=false;
-        workObject.SetActive(false);
-	}
-	private void OnButtonClick()
+	public void OnTriggerStay2D(Collider2D other) {
+        if(other.CompareTag("Player")) {
+            if(EAction.action.IsPressed()) {
+                OnEClicked();
+                Debug.Log("Yep");
+            }
+        }
+    }
+
+	private void OnEClicked()
     {   
         IAbno abnoIF = abno.GetComponent<IAbno>();
         workTime = abnoIF.WorkTime;
@@ -60,6 +54,7 @@ public class Workbuttonscripts : MonoBehaviour
         Debug.Log("clicked");
         //change work time based on another stat later
     }
+
     public void start(string workType){
         workObject.SetActive(false);
         Vector2 pos = cell.transform.position;

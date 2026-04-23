@@ -299,7 +299,7 @@ Transform:
   m_GameObject: {fileID: 2461606686573731196}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -323,8 +323,8 @@ MonoBehaviour:
   m_SortingOrder: 0
   m_Position: 0
   m_WorldSpaceSizeMode: 1
-  m_WorldSpaceWidth: 200
-  m_WorldSpaceHeight: 250
+  m_WorldSpaceWidth: 100
+  m_WorldSpaceHeight: 1
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
@@ -683,7 +683,8 @@ MonoBehaviour:
   mindMAX: 15
   soul: 15
   soulMAX: 15
-  Favors: 
+  Favors: 01
+  enkephalin: 00000000
   currentlyWorking: 0
 --- !u!50 &3322409614221485928
 Rigidbody2D:
@@ -811,7 +812,7 @@ Transform:
   m_GameObject: {fileID: 6524304900179453142}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -835,8 +836,8 @@ MonoBehaviour:
   m_SortingOrder: 0
   m_Position: 0
   m_WorldSpaceSizeMode: 1
-  m_WorldSpaceWidth: 200
-  m_WorldSpaceHeight: 200
+  m_WorldSpaceWidth: 100
+  m_WorldSpaceHeight: 1
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}

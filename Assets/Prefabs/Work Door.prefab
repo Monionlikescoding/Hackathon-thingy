@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 3385086231159435115}
   - component: {fileID: 1998866418110060558}
   - component: {fileID: 5349828802571637544}
+  - component: {fileID: 8135977385675173037}
   m_Layer: 0
   m_Name: Work Door
   m_TagString: Untagged
@@ -237,6 +238,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8135977385675173037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4215789357897099082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fefa5a363a84e144b30b7cf64ba9380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Workbuttonscripts
+  EAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: E
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 5d41b3e6-4206-4c58-b0c7-f2fc442e1709
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  cell: {fileID: 0}
+  abno: {fileID: 0}
+  workObject: {fileID: 0}
+  workTime: 0
+  doc: {fileID: 0}
+  roomID: 0
 --- !u!1 &8982873152911801146
 GameObject:
   m_ObjectHideFlags: 0
