@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 8116993410966758513}
   m_Layer: 0
   m_Name: Abnormality
-  m_TagString: Untagged
+  m_TagString: Abno
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1021,7 +1021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7756309287780676721, guid: 7216459cafade4cd49d57989e4c37ee4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.91
+      value: -4.035
       objectReference: {fileID: 0}
     - target: {fileID: 7756309287780676721, guid: 7216459cafade4cd49d57989e4c37ee4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1055,13 +1055,60 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8135977385675173037, guid: 7216459cafade4cd49d57989e4c37ee4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4215789357897099082, guid: 7216459cafade4cd49d57989e4c37ee4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 411330698576513631}
   m_SourcePrefab: {fileID: 100100000, guid: 7216459cafade4cd49d57989e4c37ee4, type: 3}
 --- !u!4 &3611762282621923135 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7756309287780676721, guid: 7216459cafade4cd49d57989e4c37ee4, type: 3}
   m_PrefabInstance: {fileID: 6466180170812201806}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7150874594721381380 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4215789357897099082, guid: 7216459cafade4cd49d57989e4c37ee4, type: 3}
+  m_PrefabInstance: {fileID: 6466180170812201806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &411330698576513631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7150874594721381380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fefa5a363a84e144b30b7cf64ba9380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Workbuttonscripts
+  EAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: E
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: bd799c6a-70df-41a5-acf8-2f7922b69ef1
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 03c917c0-1e90-4f01-8b64-88f6b8d0447e
+        m_Path: <Keyboard>/e
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: E
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  cell: {fileID: 9076775991964064590}
+  abno: {fileID: 2633661011739112791}
+  workObject: {fileID: 0}
+  workTime: 0
+  doc: {fileID: 0}
+  roomID: 0
