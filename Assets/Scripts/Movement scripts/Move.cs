@@ -52,7 +52,7 @@ public class Move : MonoBehaviour
         moveValue.y=0; // you can only move in the x-direction
         if(!currentlyWorking) {
             playerRb.AddForce(moveValue * speed * 500 * Time.deltaTime);
-        }
+        
 
         Vector2 vel = playerRb.linearVelocity;
 
@@ -91,6 +91,11 @@ public class Move : MonoBehaviour
             transform.localScale = new Vector2(1, 1);
             transform.Find("HealthBar").localScale=new Vector2(1,1);
             transform.Find("MindBar").localScale=new Vector2(1,1);
+        }
+
+        }
+        else {
+            transform.localScale = new Vector2(-1,1);
         }
 
 

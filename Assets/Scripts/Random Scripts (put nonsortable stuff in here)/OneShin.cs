@@ -12,6 +12,7 @@ public class OneShin : MonoBehaviour, IAbno
     public int angerCount = 0;
     public int threatLevel = 0;
     public float chanceToGetGift = 0.05f;
+    public float chanceToGetEnk = 0.7f;
     public float workTime = 1;
     public int amountOfWorks = 10;
     public float egoGiftID;
@@ -130,6 +131,12 @@ public class OneShin : MonoBehaviour, IAbno
     { 
         get => amountOfWorks;
         set => amountOfWorks = value;
+    }
+
+    public float ChanceToGetEnk 
+    { 
+        get => chanceToGetEnk;
+        set => chanceToGetEnk = value;
     }
 
 }
