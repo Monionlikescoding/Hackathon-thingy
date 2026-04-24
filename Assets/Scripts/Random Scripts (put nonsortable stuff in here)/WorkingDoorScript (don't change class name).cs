@@ -29,6 +29,7 @@ public class Workbuttonscripts : MonoBehaviour
         workObject=GameObject.Find("WorkUI");
         doc=GetComponent<UIDocument>();
         EAction.action.Enable();
+        transform.Find("InteractButton").gameObject.SetActive(false);
         
 	}
 
@@ -41,8 +42,15 @@ public class Workbuttonscripts : MonoBehaviour
                 OnEClicked();
                 Debug.Log("Yep");
             }
+            transform.Find("InteractButton").gameObject.SetActive(true);
         }
     }
+	public void OnTriggerExit2D(Collider2D collision) {
+		if(collision.CompareTag("Player")) {
+            workObject.SetActive(false);
+            transform.Find("InteractButton").gameObject.SetActive(false);
+		}
+	}
 
 	private void OnEClicked()
     {   
