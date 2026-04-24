@@ -13,6 +13,7 @@ public class CorridorDoor : MonoBehaviour
     private bool opening;
     private int openState;
     public int roomid;
+    public int corridorRoomId;
     public List<Sprite> openSprites;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
