@@ -38,7 +38,7 @@ public class OneShin : MonoBehaviour, IAbno
             playerStats[3] = 0;
         }
         currentCD=-1;
-        transform.parent.Find("Enk WorldSpace").Find("Enk Text").gameObject.GetComponent<TextMeshPro>().enabled=false;
+        transform.parent.Find("Enk WorldSpace").Find("Enk Text").gameObject.GetComponent<TextMeshProUGUI>().enabled=false;
     }
 	public void FixedUpdate() {
 		if(currentCD>0){
@@ -50,7 +50,7 @@ public class OneShin : MonoBehaviour, IAbno
                 Destroy(item);
             }
             currentCD--;
-            transform.parent.Find("Enk WorldSpace").Find("Enk Text").gameObject.GetComponent<TextMeshPro>().enabled=false;
+            transform.parent.Find("Enk WorldSpace").Find("Enk Text").gameObject.GetComponent<TextMeshProUGUI>().enabled=false;
         }
 	}
     public void fin(){
