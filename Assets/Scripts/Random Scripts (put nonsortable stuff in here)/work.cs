@@ -53,8 +53,8 @@ public class work : MonoBehaviour
         temps = new ArrayList();
 		float totalTime = amountOfWorks * trueTime;
         EnkText=abno.transform.parent.Find("Enk WorldSpace").Find("Enk Text").gameObject;
-        EnkText.GetComponent<TextMeshPro>().enabled=true;
-        EnkText.GetComponent<TextMeshPro>().text="+0";
+        EnkText.GetComponent<TextMeshProUGUI>().enabled=true;
+        EnkText.GetComponent<TextMeshProUGUI>().text="+0";
 		EnkCount =0;
 		workingTime = totalTime;
         amntToWait = trueTime;
@@ -87,7 +87,7 @@ public class work : MonoBehaviour
                     temp.transform.localPosition=new Vector3(0,-1.7f+3.4f/(2*totalAmount)+(totalAmount-amntToDo)*3.4f/totalAmount,0);
                     temp.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,3.4f/totalAmount);
                     EnkCount++;
-                    EnkText.GetComponent<TextMeshPro>().text="+"+EnkCount;
+                    EnkText.GetComponent<TextMeshProUGUI>().text="+"+EnkCount;
             } else {
                     //Debug.Log("not plus one little enkephalin");
                     temp=Instantiate(neg,storage.transform);
@@ -104,7 +104,7 @@ public class work : MonoBehaviour
                     temp.transform.localPosition=new Vector3(0,-1.7f+3.4f/(2*totalAmount)+(totalAmount-amntToDo)*3.4f/totalAmount,0);
                     temp.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,3.4f/totalAmount);
                     EnkCount++;
-                    EnkText.GetComponent<TextMeshPro>().text="+"+EnkCount;
+                    EnkText.GetComponent<TextMeshProUGUI>().text="+"+EnkCount;
             } 
             else {
                     //Debug.Log("not plus one little enkephalin");
@@ -121,7 +121,7 @@ public class work : MonoBehaviour
                     temp.transform.localPosition=new Vector3(0,-1.7f+3.4f/(2*totalAmount)+(totalAmount-amntToDo)*3.4f/totalAmount,0);
                     temp.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,3.4f/totalAmount);
                     EnkCount++;
-                    EnkText.GetComponent<TextMeshPro>().text="+"+EnkCount;
+                    EnkText.GetComponent<TextMeshProUGUI>().text="+"+EnkCount;
             } 
             else {
                    // Debug.Log("not plus one little enkephalin");
