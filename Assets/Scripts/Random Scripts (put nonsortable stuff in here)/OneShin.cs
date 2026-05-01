@@ -38,7 +38,22 @@ public class OneShin : MonoBehaviour, IAbno
             playerStats[3] = 0;
         }
         currentCD=-1;
-        transform.parent.Find("Enk WorldSpace").Find("Enk Text").gameObject.GetComponent<TextMeshProUGUI>().enabled=false;
+
+        Transform parentTransform = transform.parent;
+        
+        if (parentTransform != null)
+        {
+            Transform worldSpace = parentTransform.Find("Enk WorldSpace");
+            if (worldSpace != null)
+            {
+                Transform textChild = worldSpace.Find("Enk Text");
+                
+                if (textChild != null)
+                {
+                    textChild.gameObject.GetComponent<TextMeshProUGUI>().enabled = false;
+                }
+            }
+        }
     }
 	public void FixedUpdate() {
 		if(currentCD>0){
