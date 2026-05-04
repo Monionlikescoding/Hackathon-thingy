@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using static UnityEditor.PlayerSettings;
 
-public class ElevatorDoor : MonoBehaviour
+public class ElevatorDoor : MonoBehaviour, IDoor
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     // (OnEnable is just start but slightly different)
@@ -56,5 +56,11 @@ public class ElevatorDoor : MonoBehaviour
         pos.y -= 0.5f;
         pos.x -= 0.5f;
         player.transform.position = pos;
+    }
+
+    public int RoomID 
+    { 
+        get => roomID;
+        set => roomID = value;
     }
 }
