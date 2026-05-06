@@ -39,7 +39,7 @@ public class Workbuttonscripts : MonoBehaviour
 	}
     
 	public void OnTriggerStay2D(Collider2D other) {
-        if(other.CompareTag("Player")&&transform.parent.Find("Abnormality").GetComponent<OneShin>().CurrentCD<=0) {
+        if(other.CompareTag("Player") && (FindChildWithTag(transform.parent.gameObject, "Abno")).GetComponent<IAbno>().CurrentCD<=0) {
             if(EAction.action.IsPressed()) {
                 OnEClicked();
                 Debug.Log("Yep");
@@ -73,8 +73,17 @@ public class Workbuttonscripts : MonoBehaviour
         pos.x += 0.75f;
         player.transform.position = pos;
         player.GetComponent<Move>().RoomId = roomID;
-        GameObject AbNo = cell.transform.Find("Abnormality").gameObject;
+        GameObject AbNo = FindChildWithTag(cell, "Abno").gameObject;
         wok.Work(AbNo, workTime, AbNo.GetComponent<IAbno>().AmountOfWorks, gameObject, workType);
         Debug.Log("Something happened");
+    }
+
+    private GameObject FindChildWithTag(GameObject parent, string tag) {
+        foreach (Transform child in parent.transform) {
+            if (child.CompareTag(tag)) { // CompareTag is more performant than child.tag == tag
+                return child.gameObject;
+            }
+        }
+        return null;
     }
 }
