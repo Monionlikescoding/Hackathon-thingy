@@ -178,6 +178,10 @@ public class Door : MonoBehaviour, IDoor
         fullyOpen = false;
     }*/
 
+    public int getOtherDoorID() {
+        return exit.GetComponent<Door>().roomid;
+    }
+
     public int RoomID 
     { 
         get => roomid;
