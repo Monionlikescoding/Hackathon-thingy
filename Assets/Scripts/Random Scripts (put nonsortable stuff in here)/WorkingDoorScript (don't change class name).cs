@@ -50,7 +50,7 @@ public class Workbuttonscripts : MonoBehaviour
 	public void OnTriggerExit2D(Collider2D collision) {
 		if(collision.CompareTag("Player")) {
             if(workObject != null) {
-                if(workObject.activeSelf==true) workObject.SetActive(false);
+                if(workObject.activeSelf==true) workObject.GetComponent<WorkTypeScripts>().HideUI();
             }
             transform.Find("InteractButton").gameObject.SetActive(false);
 		}
@@ -61,14 +61,14 @@ public class Workbuttonscripts : MonoBehaviour
         if(abno.GetComponent<IAbno>().CurrentCD<0){
             abnoIF = abno.GetComponent<IAbno>();
             workTime = abnoIF.WorkTime;
-            workObject.SetActive(true);
+            workObject.GetComponent<WorkTypeScripts>().ShowUI();
             workObject.GetComponent<WorkTypeScripts>().buttonScript = gameObject.GetComponent<Workbuttonscripts>();
         }
         //change work time based on another stat later
     }
 
     public void start(string workType){
-        workObject.SetActive(false);
+        workObject.GetComponent<WorkTypeScripts>().HideUI();
         Vector2 pos = cell.transform.position;
         pos.y -= 1.3f;
         pos.x += 0.75f;

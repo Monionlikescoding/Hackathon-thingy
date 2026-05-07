@@ -57,6 +57,10 @@ public class ElevatorDoor : MonoBehaviour, IDoor
         player.transform.position = pos;
     }
 
+    public int getOtherDoorID() {
+        return targetDoor.GetComponent<ElevatorDoor>().roomID;
+    }
+
     public int RoomID 
     { 
         get => roomID;
