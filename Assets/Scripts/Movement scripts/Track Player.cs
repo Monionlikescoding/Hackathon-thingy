@@ -47,7 +47,7 @@ public class TrackPlayer : MonoBehaviour
 
        
         
-        Debug.Log(players.Length);
+        //Debug.Log(players.Length);
         if(players.Length > 0) {
             Debug.Log(players[0]);
         }
@@ -57,7 +57,7 @@ public class TrackPlayer : MonoBehaviour
                 target=players[i];
             }
         }
-        Debug.Log(target);
+        //Debug.Log(target);
         if(target != null) {
             Vector2 direction = (target.transform.position - gameObject.transform.position).normalized;
             direction.y = 0;
