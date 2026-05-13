@@ -76,6 +76,30 @@ public class Door : MonoBehaviour, IDoor
                 
             }
         }
+
+        if (other.CompareTag("Employee"))
+        {
+            opening=true;
+            exit.GetComponent<Door>().opening=true;
+            if (other.IsTouching(GoThroughRunner.GetComponent<Collider2D>()))
+            {
+                Transform exitPoint = exit.transform.Find("Exit");
+                other.gameObject.transform.position = exitPoint.position;
+                other.GetComponent<EmployeeMove>().RoomId = exit.GetComponent<Door>().roomid;
+            }
+        }
+
+        if (other.CompareTag("EscapedAbno"))
+        {
+            opening=true;
+            exit.GetComponent<Door>().opening=true;
+            if (other.IsTouching(GoThroughRunner.GetComponent<Collider2D>()))
+            {
+                Transform exitPoint = exit.transform.Find("Exit");
+                other.gameObject.transform.position = exitPoint.position;
+                other.GetComponent<TrackPlayer>().roomid = exit.GetComponent<Door>().roomid;
+            }
+        }
     }
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.CompareTag("Player")||other.CompareTag("AbnoEscaped"))
@@ -195,5 +219,10 @@ public class Door : MonoBehaviour, IDoor
     { 
         get => roomid;
         set => roomid = value;
+    }
+    public GameObject Exit 
+    { 
+        get => exit;
+        set => exit = value;
     }
 }

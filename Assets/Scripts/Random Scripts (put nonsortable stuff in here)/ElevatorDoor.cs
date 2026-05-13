@@ -15,7 +15,6 @@ public class ElevatorDoor : MonoBehaviour, IDoor
 
     private void Start()
     {
-        // 1. Get the root VisualElement from the UIDocument component
         player=GameObject.Find("Bongbong");
         EAction.action.Enable();
         transform.Find("InteractButton").gameObject.SetActive(false);
@@ -37,6 +36,12 @@ public class ElevatorDoor : MonoBehaviour, IDoor
             if (button != null)
                 button.gameObject.SetActive(true);
         }
+
+        if (collision.CompareTag("Employee")) {
+            if (collision.gameObject.GetComponent<EmployeeMove>().wantToGoDownElevator && targetDoor.GetComponent<ElevatorDoor>().cd < 0 && cd < 0) {
+                MoveEmployee(collision.gameObject);
+            }
+        }
     }
 
     public void OnTriggerExit2D(Collider2D collision) {
@@ -57,6 +62,16 @@ public class ElevatorDoor : MonoBehaviour, IDoor
         player.transform.position = pos;
     }
 
+    private void MoveEmployee(GameObject employe) {
+        employe.GetComponent<EmployeeMove>().RoomId = targetDoor.GetComponent<ElevatorDoor>().roomID;
+        targetDoor.GetComponent<ElevatorDoor>().cd = 1;
+        cd = 1;
+        Vector2 pos = targetDoor.transform.position;
+        pos.y -= 0.5f;
+        pos.x -= 0.5f;
+        employe.transform.position = pos;
+    }
+
     public int getOtherDoorID() {
         return targetDoor.GetComponent<ElevatorDoor>().roomID;
     }
@@ -65,5 +80,11 @@ public class ElevatorDoor : MonoBehaviour, IDoor
     { 
         get => roomID;
         set => roomID = value;
+    }
+
+    public GameObject Exit 
+    { 
+        get => targetDoor;
+        set => targetDoor = value;
     }
 }
