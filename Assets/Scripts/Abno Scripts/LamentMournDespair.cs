@@ -136,6 +136,10 @@ public class LamentMournDespair : MonoBehaviour, IAbno
 
     }
 
+    public void onEscapeDeath() {
+        Debug.Log("Killed Enemy");
+    }
+
     
 
 

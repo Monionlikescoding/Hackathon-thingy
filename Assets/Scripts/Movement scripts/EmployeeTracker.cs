@@ -1,12 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
-public class TrackPlayer : MonoBehaviour
+public class EmployeeTracker : MonoBehaviour
 {
     public int Roomid;
     public GameObject[] roomIds;
-    public GameObject[] players;
-    public GameObject[] employees;
+    public GameObject[] Abnos;
     public ArrayList doors;
     public GameManager gameObjectScript;
     private GameObject currRoom;
@@ -15,37 +14,33 @@ public class TrackPlayer : MonoBehaviour
     private float targetValue; // Basically, how valuable is the target, is it 0 : a door, 0.45 : person already chosen, 0.5 : a door leading to a player/employee, 1 : an employee, 1.5 : a close employee (within the hit boundary (always prioritizes player)), 2 : a player, 3 : a player inside the hit detection collider (not added yet)
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float speed = 1;
+    public float atkCDMAX = 0.6f;
+    public float atkCD = 0f;
+    public float dmg = 3f;
+    public float dmgType = 0f;
+    Animator anim;
     void Start()
     {
         gameObjectScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        GameObject[] employees = GameObject.FindGameObjectsWithTag("Employee");
+        GameObject[] Abnos = GameObject.FindGameObjectsWithTag("EscapedAbno");
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {   
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        GameObject[] employees = GameObject.FindGameObjectsWithTag("Employee");
+        GameObject[] Abnos = GameObject.FindGameObjectsWithTag("EscapedAbno");
         doors = new ArrayList();
         target = null;
         currRoom = gameObjectScript.rooms[Roomid];
+        atkCD += Time.deltaTime;
         
             foreach (Transform child in currRoom.transform)
             {
                 bool found = false;
                 if(child.gameObject.tag == "Door") {
-                    foreach (GameObject P in players) {
-                        if(child.gameObject.GetComponent<IDoor>().Exit.GetComponent<IDoor>().RoomID == P.GetComponent<Move>().RoomId){
-                            //dir='l';
-                            found = true;
-                            target = child.gameObject;
-                            break;
-                        }
-                    }
-
-                    foreach (GameObject P in employees) {
-                        if(child.gameObject.GetComponent<IDoor>().Exit.GetComponent<IDoor>().RoomID == P.GetComponent<EmployeeMove>().RoomId){
+                    foreach (GameObject P in Abnos) {
+                        if(child.gameObject.GetComponent<IDoor>().Exit.GetComponent<IDoor>().RoomID == P.GetComponent<TrackPlayer>().Roomid){
                             //dir='l';
                             found = true;
                             target = child.gameObject;
@@ -62,18 +57,10 @@ public class TrackPlayer : MonoBehaviour
         
         //Debug.Log(players.Length);
         
-        for(int i = 0; i < players.Length; i++) {
-            if(players[i].GetComponent<Move>().RoomId == Roomid) {
-                target=players[i];
+        for(int i = 0; i < Abnos.Length; i++) {
+            if(Abnos[i].GetComponent<TrackPlayer>().Roomid == Roomid) {
+                target=Abnos[i];
                 break;
-            }
-        }
-        if(target == null) {
-            for(int i = 0; i < employees.Length; i++) {
-                if(employees[i].GetComponent<EmployeeMove>().RoomId == Roomid) {
-                    target=employees[i];
-                    break;
-                }
             }
         }
 
@@ -84,13 +71,21 @@ public class TrackPlayer : MonoBehaviour
             direction.y = 0;
             if(!targetAlrInside) {
                 transform.Translate(direction*Time.deltaTime*speed);
+            }
+            else {
+                attack();
+                direction.x = 0;
+            }
+
+            if(direction.x != 0) {
+                anim.SetBool("walking", true);
+            
 
             }
             else {
-                if(GetComponent<Attack>() != null) {
-                    GetComponent<Attack>().attack();
-                }
+                anim.SetBool("walking", false);
             }
+
             if(direction.x < 0) {
                 transform.localScale = new Vector2(-1, 1);
             }
@@ -113,7 +108,32 @@ public class TrackPlayer : MonoBehaviour
 
         return false;
     }
-    public void resetDir(){
-        //dir='n';
+
+    public void attack() {
+        if(atkCD >= atkCDMAX) {
+            anim.SetTrigger("swipe");
+			atkCD = 0f;
+            Invoke("Attack", 0.45f);
+        }
+    }
+
+    void Attack() {
+        Debug.Log("Attacked");
+
+        BoxCollider2D attackBoxCollider = transform.Find("CloseToAttack").gameObject.GetComponent<BoxCollider2D>();
+
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll( attackBoxCollider.bounds.center, attackBoxCollider.bounds.size, attackBoxCollider.transform.eulerAngles.z );
+
+        foreach (var hit in hitColliders) {
+            if (hit.gameObject.CompareTag("EscapedAbno")) {
+                Debug.Log(hit.gameObject);
+                switch(dmgType) {
+                    case 0 : hit.gameObject.GetComponent<IDmgable>().AdjustHp(-dmg); break;
+                    case 1 : hit.gameObject.GetComponent<IDmgable>().AdjustSp(-dmg); break;
+                    case 2 : hit.gameObject.GetComponent<IDmgable>().AdjustSoul(-dmg); break;
+                }
+            }
+        }
+
     }
 }

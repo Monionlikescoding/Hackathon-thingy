@@ -9,6 +9,9 @@ public class TitleScreen : MonoBehaviour
     void Start()
     {
         newGame=transform.Find("New Game").GetComponent<Button>();
+        Transform buttonTransform = transform.Find("New Game");
+        Debug.Log(buttonTransform.GetComponent<Button>());
+        Debug.Log(buttonTransform);
         newGame.onClick.AddListener(NewGame);
     }
 

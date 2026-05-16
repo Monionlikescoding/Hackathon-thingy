@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.WSA;
 
-public class EmployeeMove : MonoBehaviour
+public class EmployeeMove : MonoBehaviour, IDmgable
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float speed; // Speed is multiplied by 100
@@ -68,9 +68,10 @@ public class EmployeeMove : MonoBehaviour
 	// Fixed update is constant time, (this is needed for applying forces & velocity management as many devices run on different framerates)
 	void FixedUpdate()
     {
-        Vector2 moveValue = new Vector2(1,0);
+        //Vector2 moveValue = new Vector2(1,0);
         //playerRb.AddForce(moveValue * speed * 500 * Time.deltaTime);
         //I will finish this dont touchy
+        /*
         if(employeeState==1) {
             if(stateTimer==0){
                 wands.Insert(0,UnityEngine.Random.Range(60,120));
@@ -81,30 +82,34 @@ public class EmployeeMove : MonoBehaviour
                 }
             }
         }
+        */
 
-        stateTimer++;
+        //stateTimer++;
 		Vector2 vel = playerRb.linearVelocity;
 
 
         vel.x = Mathf.Clamp(vel.x, -speed, speed); // clamping x-velocity to speed
         playerRb.linearVelocity = vel;
-        anim.SetBool("working", false);
-        if(moveValue.x != 0) {
-            anim.SetBool("walking", true);
-        }
-        else {
-            anim.SetBool("walking", false);
-        }
+    }
 
-        if(moveValue.x < 0) {
-            transform.localScale = new Vector2(-1, 1);
+    public float Health {get => body; set=> body = value;}
+    public float MaxHP {get => bodyMAX; set=> bodyMAX = value;}
+    public float Sp {get => mind; set=> mind = value;}
+    public float MaxSp {get => mindMAX; set=> mindMAX = value;}
+    public float Soul {get => soul; set=> soul = value;}
+    public float MaxSoul {get => soulMAX; set=> soulMAX = value;}
 
-        }
-        else if(moveValue.x > 0) {
-            transform.localScale = new Vector2(1, 1);
-        }
-
-
+    public void AdjustSp(float a){
+        mind += a;
+    }
+    public void AdjustHp(float a) {
+        body += a;
+    }
+    public void AdjustSoul(float a) {
+        soul += a;
+    }
+    public void Die() {
+        Destroy(gameObject);
     }
 
 

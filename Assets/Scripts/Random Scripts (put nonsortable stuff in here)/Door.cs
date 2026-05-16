@@ -86,6 +86,7 @@ public class Door : MonoBehaviour, IDoor
                 Transform exitPoint = exit.transform.Find("Exit");
                 other.gameObject.transform.position = exitPoint.position;
                 other.GetComponent<EmployeeMove>().RoomId = exit.GetComponent<Door>().roomid;
+                other.GetComponent<EmployeeTracker>().Roomid = exit.GetComponent<Door>().roomid;
             }
         }
 

@@ -41,6 +41,8 @@ public class Move : MonoBehaviour, IDmgable
     public float fillSpeed = 3f;
     public float atkCDMAX = 0.6f;
     public float atkCD = 0f;
+    public float dmg = 3f;
+    public float dmgType = 0f;
 
     void Start()
     {
@@ -139,11 +141,9 @@ public class Move : MonoBehaviour, IDmgable
 
             if(moveValue.x < 0) {
                 transform.localScale = new Vector2(-1, 1);
-                atkHB.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
             }
             else if(moveValue.x > 0) {
                 transform.localScale = new Vector2(1, 1);
-                atkHB.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
 
         }
@@ -176,7 +176,29 @@ public class Move : MonoBehaviour, IDmgable
                 Debug.Log("attacked");
             }
 			atkCD = 0f;
+
+            Invoke("Attack", 0.45f);
         }
+    }
+
+    void Attack() {
+        Debug.Log("Attacked");
+
+        BoxCollider2D attackBoxCollider = transform.Find("Attack HitBox").gameObject.GetComponent<BoxCollider2D>();
+
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll( attackBoxCollider.bounds.center, attackBoxCollider.bounds.size, attackBoxCollider.transform.eulerAngles.z );
+
+        foreach (var hit in hitColliders) {
+            if (hit.gameObject.CompareTag("EscapedAbno")) {
+                Debug.Log(hit.gameObject);
+                switch(dmgType) {
+                    case 0 : hit.gameObject.GetComponent<IDmgable>().AdjustHp(-dmg); break;
+                    case 1 : hit.gameObject.GetComponent<IDmgable>().AdjustSp(-dmg); break;
+                    case 2 : hit.gameObject.GetComponent<IDmgable>().AdjustSoul(-dmg); break;
+                }
+            }
+        }
+
     }
 
     public float Health {get => body; set=> body = value;}
@@ -194,6 +216,9 @@ public class Move : MonoBehaviour, IDmgable
     }
     public void AdjustSoul(float a) {
         soul += a;
+        if(soul <= 0) {
+            body += a;
+        }
     }
     public void Die() {
         mind = mindMAX;
