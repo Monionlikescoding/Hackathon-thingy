@@ -28,6 +28,7 @@ public class DeathsBell : MonoBehaviour, IAbno
     public float cooldown=5f;
     private float currentCD=-1f;
     public int id = 2;
+    public bool angry = false;
     private GameObject cd;
     private GameObject result;
     private variableScript mang; 
@@ -93,6 +94,22 @@ public class DeathsBell : MonoBehaviour, IAbno
             result.GetComponent<Image>().enabled=false;
             transform.parent.Find("Enk WorldSpace").Find("Enk Text").gameObject.GetComponent<TextMeshProUGUI>().enabled=false;
         }
+
+        if(angerCount < 0 && !angry) {
+            angry = true;
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            GameObject[] employees = GameObject.FindGameObjectsWithTag("Employee");
+            foreach (GameObject p in players) {
+                p.GetComponent<IDmgable>().AdjustSoul(-1);
+            }
+            foreach (GameObject e in employees) {
+                e.GetComponent<IDmgable>().AdjustHp(-15);
+            }
+            angerCount = maxAngerCount;
+        }
+        if(angerCount > 0) {
+            angry = false;
+        }
 	}
 
     public void finished(int enke){
@@ -132,7 +149,7 @@ public class DeathsBell : MonoBehaviour, IAbno
     }
 
     public void onEmployeeDeath() {
-
+        angerCount-=100;
     }
 
     public void getEgoGift() {

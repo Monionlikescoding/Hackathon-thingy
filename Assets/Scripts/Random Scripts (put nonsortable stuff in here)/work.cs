@@ -183,4 +183,12 @@ public class work : MonoBehaviour
             break;
         }
     }
+
+    public void ohDangIDied() {
+        CancelInvoke("startWorking");
+        workingTime = -1f;
+        abno.GetComponent<IAbno>().finished(EnkCount);
+        abno.GetComponent<IAbno>().onEmployeeDeath();
+        
+    }
 }
