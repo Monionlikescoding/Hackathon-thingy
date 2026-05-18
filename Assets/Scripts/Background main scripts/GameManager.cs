@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public float time = 1f;
     public float fillSpeed = 3f;
     public float healingAmnt = 3;
+    public int EndorphinsCollected = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

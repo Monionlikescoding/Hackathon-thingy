@@ -22,11 +22,13 @@ public class work : MonoBehaviour
     public ArrayList temps;
     private GameObject EnkText;
     private int EnkCount;
+    public GameManager gameManger;
     void Start()
     {
         playerScript = GetComponentInParent<Move>();
         pos=GameObject.Find("Game Manager").GetComponent<variableScript>().Enk.gameObject;
         neg=GameObject.Find("Game Manager").GetComponent<variableScript>().nEnk.gameObject;
+        gameManger=GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -88,6 +90,8 @@ public class work : MonoBehaviour
                     temp.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,3.4f/totalAmount);
                     EnkCount++;
                     EnkText.GetComponent<TextMeshProUGUI>().text="+"+EnkCount;
+                    gameManger.EndorphinsCollected = gameManger.EndorphinsCollected + 1;
+
             } else {
                     //Debug.Log("not plus one little enkephalin");
                     temp=Instantiate(neg,storage.transform);
@@ -105,6 +109,7 @@ public class work : MonoBehaviour
                     temp.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,3.4f/totalAmount);
                     EnkCount++;
                     EnkText.GetComponent<TextMeshProUGUI>().text="+"+EnkCount;
+                    gameManger.EndorphinsCollected = gameManger.EndorphinsCollected + 1;
             } 
             else {
                     //Debug.Log("not plus one little enkephalin");
@@ -122,6 +127,7 @@ public class work : MonoBehaviour
                     temp.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,3.4f/totalAmount);
                     EnkCount++;
                     EnkText.GetComponent<TextMeshProUGUI>().text="+"+EnkCount;
+                    gameManger.EndorphinsCollected = gameManger.EndorphinsCollected + 1;
             } 
             else {
                    // Debug.Log("not plus one little enkephalin");
@@ -189,6 +195,6 @@ public class work : MonoBehaviour
         workingTime = -1f;
         abno.GetComponent<IAbno>().finished(EnkCount);
         abno.GetComponent<IAbno>().onEmployeeDeath();
-        
+
     }
 }

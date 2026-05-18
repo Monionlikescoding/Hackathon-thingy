@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Move : MonoBehaviour, IDmgable
 {
@@ -25,8 +26,8 @@ public class Move : MonoBehaviour, IDmgable
     public float mind = 15f;
     public float mindMAX = 15f;
 
-    public float soul=15f;
-    public float soulMAX=15f;
+    public float soul=3f;
+    public float soulMAX=3f;
 
     public bool[] Favors; // This is the array that has the boolean values for whether special work is available
     public int[] enkephalin;
@@ -234,12 +235,13 @@ public class Move : MonoBehaviour, IDmgable
     public void Die() {
         mind = mindMAX;
         body = bodyMAX;
-        soul -= 10;
+        soul -= 1;
         if(soul >= 0) {
             RoomId = 0;
             transform.position = new Vector2 (0, -1.8f);
         }
         else {
+            SceneManager.LoadScene("U lost");
             RoomId = 0;
             transform.position = new Vector2 (0, -1.8f);
         }

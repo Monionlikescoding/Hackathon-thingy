@@ -8,7 +8,7 @@ public class DeathsBell : MonoBehaviour, IAbno
     public GameObject player;
     public float[] playerStats;
     public int dmgType = 0;
-    public int dmgAmnt = 2;
+    public int dmgAmnt = 5;
     public bool canEscape = false;
     public bool hasAngerMeter = true;
     public int maxAngerCount = 2;
@@ -16,7 +16,7 @@ public class DeathsBell : MonoBehaviour, IAbno
     public int workType;
     public int threatLevel = 0;
     public float chanceToGetGift = 0.05f;
-    public float chanceToGetEnkH = 1f;
+    public float chanceToGetEnkH = 0.85f;
     public float chanceToGetEnkM = 0.2f;
     public float chanceToGetEnkS = 0.3f;
     public float workTime = 1;
