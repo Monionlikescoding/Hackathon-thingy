@@ -1,8 +1,6 @@
 <h2>Concussion Company</h2>
 <p>Our submittion to Pihacks</p>
-<p>&nbsp;</p>
 <h2>To get started :</h2>
-<p>&nbsp;</p>
 <p>Depending on your system, download the corresponding ZIP file. There isn't a Linux file unfortunately</p>
 <h2><strong>About :</strong></h2>
 <p>Uncompress the zip file and run the .exe (windows) or application file (mac).</p>
