@@ -37,7 +37,8 @@ public class ElevatorDoor : MonoBehaviour, IDoor
         }
 
         if (collision.CompareTag("Employee")) {
-            if (targetDoor.GetComponent<ElevatorDoor>().cd < 0 && cd < 0) {
+            if (targetDoor.GetComponent<ElevatorDoor>().cd < 0 && cd < 0 && collision.gameObject.GetComponent<EmployeeTracker>().wantsToGoThroughElevator) {
+                collision.gameObject.GetComponent<EmployeeTracker>().wantsToGoThroughElevator = false;
                 MoveEmployee(collision.gameObject);
             }
         }
@@ -63,6 +64,7 @@ public class ElevatorDoor : MonoBehaviour, IDoor
 
     private void MoveEmployee(GameObject employe) {
         employe.GetComponent<EmployeeMove>().RoomId = targetDoor.GetComponent<ElevatorDoor>().roomID;
+        employe.GetComponent<EmployeeTracker>().Roomid = targetDoor.GetComponent<ElevatorDoor>().roomID;
         targetDoor.GetComponent<ElevatorDoor>().cd = 1;
         cd = 1;
         Vector2 pos = targetDoor.transform.position;
