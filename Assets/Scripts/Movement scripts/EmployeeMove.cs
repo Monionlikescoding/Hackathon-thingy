@@ -4,7 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEngine.WSA;
 
 public class EmployeeMove : MonoBehaviour, IDmgable
 {
@@ -63,7 +62,9 @@ public class EmployeeMove : MonoBehaviour, IDmgable
         if(body > bodyMAX) {
             body = bodyMAX;
         }
-        
+        if(body <= 0 || mind <= 0) {
+            Die();
+        }
 	}
 	// Fixed update is constant time, (this is needed for applying forces & velocity management as many devices run on different framerates)
 	void FixedUpdate()

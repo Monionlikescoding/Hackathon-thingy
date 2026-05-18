@@ -90,6 +90,11 @@ public class Move : MonoBehaviour, IDmgable
             Die();
         }
 
+        if(mind <= 0) {
+            body -= 2;
+            mind += 1f;
+        }
+
         if (click.action.ReadValue<float>() > 0) {
             OnClik();
         }
@@ -152,6 +157,12 @@ public class Move : MonoBehaviour, IDmgable
             anim.SetBool("working", true);
         }
 
+        if(body <= 0) {
+            Die();
+            workScript.ohDangIDied();
+            currentlyWorking = false;
+        }
+
 
     }
 
@@ -210,15 +221,15 @@ public class Move : MonoBehaviour, IDmgable
 
     public void AdjustSp(float a){
         mind += a;
+        if(mind <= 0) {
+            body -= a;
+        }
     }
     public void AdjustHp(float a) {
         body += a;
     }
     public void AdjustSoul(float a) {
         soul += a;
-        if(soul <= 0) {
-            body += a;
-        }
     }
     public void Die() {
         mind = mindMAX;
@@ -227,6 +238,13 @@ public class Move : MonoBehaviour, IDmgable
         if(soul >= 0) {
             RoomId = 0;
             transform.position = new Vector2 (0, -1.8f);
+        }
+        else {
+            RoomId = 0;
+            transform.position = new Vector2 (0, -1.8f);
+        }
+        if(currentlyWorking) {
+            workScript.ohDangIDied();
         }
     }
 

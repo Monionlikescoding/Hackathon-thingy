@@ -103,14 +103,14 @@ public class Door : MonoBehaviour, IDoor
         }
     }
 	void OnTriggerExit2D(Collider2D other) {
-		if (other.CompareTag("Player")||other.CompareTag("EscapedAbno"))
+		if (other.CompareTag("Player")||other.CompareTag("EscapedAbno") || other.CompareTag("Employee"))
         {
             opening=false;
             exit.GetComponent<Door>().opening=false;
         }
 	}
     void OnTriggerStay2D(Collider2D other){
-        if ((other.CompareTag("Player")||other.CompareTag("EscapedAbno"))&&opening==false)
+        if ((other.CompareTag("Player")||other.CompareTag("EscapedAbno")|| other.CompareTag("Employee"))&&opening==false)
         {
             opening=true;
             exit.GetComponent<Door>().opening=true;

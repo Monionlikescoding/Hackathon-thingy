@@ -6,6 +6,7 @@ public class LamentMournDespairEscapedScript : MonoBehaviour, IDmgable
     public float health = 100;
     public float maxHealth = 100;
     public float dmg = 3;
+    public int type = 0;
     public GameObject parentAbno;
     void Start()
     {
@@ -37,7 +38,7 @@ public class LamentMournDespairEscapedScript : MonoBehaviour, IDmgable
         health += a*2f;
     }
     public void Die() {
-        parentAbno.GetComponent<LamentMournDespair>().onEscapeDeath();
+        parentAbno.GetComponent<LamentMournDespair>().onEscapeDeath(type);
         Destroy(gameObject);
     }
 }

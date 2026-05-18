@@ -15,6 +15,7 @@ public class TrackPlayer : MonoBehaviour
     private float targetValue; // Basically, how valuable is the target, is it 0 : a door, 0.45 : person already chosen, 0.5 : a door leading to a player/employee, 1 : an employee, 1.5 : a close employee (within the hit boundary (always prioritizes player)), 2 : a player, 3 : a player inside the hit detection collider (not added yet)
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float speed = 1;
+    public float currSpeed = 1;
     void Start()
     {
         gameObjectScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -83,13 +84,15 @@ public class TrackPlayer : MonoBehaviour
             Vector2 direction = (target.transform.position - gameObject.transform.position).normalized;
             direction.y = 0;
             if(!targetAlrInside) {
-                transform.Translate(direction*Time.deltaTime*speed);
+                transform.Translate(direction*Time.deltaTime*currSpeed);
+                currSpeed = speed;
 
             }
             else {
                 if(GetComponent<Attack>() != null) {
                     GetComponent<Attack>().attack();
                 }
+                currSpeed = speed / 3.0f;
             }
             if(direction.x < 0) {
                 transform.localScale = new Vector2(-1, 1);
@@ -106,7 +109,7 @@ public class TrackPlayer : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapBoxAll( attackBoxCollider.bounds.center, attackBoxCollider.bounds.size, attackBoxCollider.transform.eulerAngles.z );
 
         foreach (var hit in hitColliders) {
-            if (hit.gameObject == target) {
+            if (hit.gameObject == target &&  (target.CompareTag("Player") || target.CompareTag("Employee")) ) {
                 return true;
             }
         }

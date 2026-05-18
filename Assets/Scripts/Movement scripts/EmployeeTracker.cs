@@ -18,12 +18,16 @@ public class EmployeeTracker : MonoBehaviour
     public float atkCD = 0f;
     public float dmg = 3f;
     public float dmgType = 0f;
+    public float timer;
+    public Vector2 pos;
+    public bool wantsToGoThroughElevator;
     Animator anim;
     void Start()
     {
         gameObjectScript = GameObject.Find("Game Manager").GetComponent<GameManager>();
         GameObject[] Abnos = GameObject.FindGameObjectsWithTag("EscapedAbno");
         anim = GetComponent<Animator>();
+        pos = createNewPos();
     }
 
     // Update is called once per frame
@@ -79,8 +83,6 @@ public class EmployeeTracker : MonoBehaviour
 
             if(direction.x != 0) {
                 anim.SetBool("walking", true);
-            
-
             }
             else {
                 anim.SetBool("walking", false);
@@ -93,6 +95,31 @@ public class EmployeeTracker : MonoBehaviour
                 transform.localScale = new Vector2(1, 1);
             }
         }
+        else {
+            Vector2 direction = pos;
+            if(timer <= 0) {
+                timer = Random.Range(0f, 4f);
+                pos = createNewPos();
+                wantsToGoThroughElevator = true;
+            }
+            direction.y = 0;
+            transform.Translate(direction*Time.deltaTime*speed);
+
+            if(direction.x != 0) {
+                anim.SetBool("walking", true);
+            }
+            else {
+                anim.SetBool("walking", false);
+            }
+
+            if(direction.x < 0) {
+                transform.localScale = new Vector2(-1, 1);
+            }
+            else if(direction.x > 0) {
+                transform.localScale = new Vector2(1, 1);
+            }
+        }
+        timer -= Time.deltaTime;
     }
 
     bool CheckForTarget(GameObject target) {
@@ -135,5 +162,9 @@ public class EmployeeTracker : MonoBehaviour
             }
         }
 
+    }
+    Vector2 createNewPos() {
+        Vector2 direction = new Vector2(Random.Range(-1f, 1f), 0).normalized;
+        return direction;
     }
 }

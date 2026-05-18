@@ -28,10 +28,20 @@ public class LamentMournDespair : MonoBehaviour, IAbno
     public float cooldown=5f;
     private float currentCD=-1f;
     public int id = 2;
+    public bool[] entities;
     private GameObject cd;
     private GameObject result;
     private variableScript mang; 
     private ArrayList tem;
+    public GameObject mourn;
+    public GameObject despair;
+    public GameObject lament;
+
+    public GameObject mournPB;
+    public GameObject despairPB;
+    public GameObject lamentPB;
+
+    public bool angry;
 
     // Update is called once per frame
     public void Start() {
@@ -69,6 +79,7 @@ public class LamentMournDespair : MonoBehaviour, IAbno
                 }
             }
         }
+        entities = new bool[3];
     }
     
 	public void FixedUpdate() {
@@ -92,6 +103,23 @@ public class LamentMournDespair : MonoBehaviour, IAbno
             cd.GetComponent<TextMeshProUGUI>().text = "";
             result.GetComponent<Image>().enabled=false;
             transform.parent.Find("Enk WorldSpace").Find("Enk Text").gameObject.GetComponent<TextMeshProUGUI>().enabled=false;
+        }
+        if(angerCount <= 0 && angry == false) {
+            angerCount = maxAngerCount;
+            Color c = GetComponentInChildren<SpriteRenderer>().color;
+            c.a = 0f;
+            GetComponentInChildren<SpriteRenderer>().color = c;
+            lament = Instantiate(lamentPB, new Vector2(0,-1.8f), Quaternion.identity);
+            lament.GetComponent<LamentMournDespairEscapedScript>().parentAbno = gameObject;
+            mourn = Instantiate(mournPB, new Vector2(7,-4), Quaternion.identity);
+            mourn.GetComponent<LamentMournDespairEscapedScript>().parentAbno = gameObject;
+            despair = Instantiate(despairPB, new Vector2(-7,-4), Quaternion.identity);
+            despair.GetComponent<LamentMournDespairEscapedScript>().parentAbno = gameObject;
+            amountOfWorks = 1;
+            angry = true;
+        }
+        if(angry) {
+            angerCount = maxAngerCount;
         }
 	}
 
@@ -118,26 +146,40 @@ public class LamentMournDespair : MonoBehaviour, IAbno
 
 	public void onBadWorkResult() {
         player.GetComponent<Move>().mind = 0;
+        angerCount--;
     }
 
     public void onNormalWorkResult() {
-
+        angerCount--;
     }
 
     public void onGoodWorkResult() {
         player.GetComponent<Move>().mind = player.GetComponent<Move>().mindMAX;
+        angerCount--;
     }
 
     public void onEmployeeDeath() {
-
+        angerCount-=2;
     }
 
     public void getEgoGift() {
 
     }
 
-    public void onEscapeDeath() {
-        Debug.Log("Killed Enemy");
+    public void onEscapeDeath(int a) {
+        switch(a) {
+            case 0: entities[0] = true; lament = null; break;
+            case 1: entities[1] = true; mourn = null; break;
+            case 2: entities[2] = true; despair = null; break;
+        }
+        if((entities[0] && entities[1] && entities[2])) {
+            angry = false;
+            entities = new bool[3];
+            Color c = GetComponentInChildren<SpriteRenderer>().color;
+            c.a = 1f;
+            GetComponentInChildren<SpriteRenderer>().color = c;
+            amountOfWorks = 12;
+        }
     }
 
     

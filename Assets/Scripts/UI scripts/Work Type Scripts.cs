@@ -34,6 +34,7 @@ public class WorkTypeScripts : MonoBehaviour
         soul.onClick.AddListener(OnSoulButtonClick);
 		special=transform.Find("SpecialButton").GetComponent<Button>();
         special.onClick.AddListener(OnSpecialButtonClick);
+        special.gameObject.SetActive(false);
         uiGroup = GetComponentInParent<CanvasGroup>();
         HideUI();
 	}
@@ -41,8 +42,17 @@ public class WorkTypeScripts : MonoBehaviour
         if(buttonScript != null) {
             if(buttonScript.abnoIF != null) {
                 bodyPercent = (int) ((buttonScript.abnoIF.ChanceToGetEnkH + move.bodyMAX*0.005)*100);
+                if(bodyPercent > 100) {
+                    bodyPercent = 100;
+                }
                 mindPercent = (int) ((buttonScript.abnoIF.ChanceToGetEnkM + move.mindMAX*0.005)*100);
+                if(mindPercent > 100) {
+                    mindPercent = 100;
+                }
                 soulPercent = (int) ((buttonScript.abnoIF.ChanceToGetEnkS + move.soulMAX*0.005)*100);
+                if(soulPercent > 100) {
+                    soulPercent = 100;
+                }
                 specialPercent = (int) ((1)*100);            
             }
         }
@@ -70,7 +80,7 @@ public class WorkTypeScripts : MonoBehaviour
     private void OnSpecialButtonClick()
     {   
         Debug.Log("[On Special Work] : Murder");
-        buttonScript.start("Special");
+        //buttonScript.start("Special");
 	}
 
     public void ShowUI()
